@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Project Organogram</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F6F8; --surface:#FFFFFF; --surface-2:#F0F2F5; --ink:#0E0E10; --muted:#6B7280; --line:#E3E6EB;
+  --primary:#0066FF; --primary-ink:#FFFFFF; --over:#E5133A; --spare:#C77800; --grid:#E6E9EE;
+  --shadow:0 1px 2px rgba(14,14,16,.06),0 6px 18px rgba(14,14,16,.06);
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1115; --surface:#191C22; --surface-2:#22262E; --ink:#F4F5F7; --muted:#9AA3B2; --line:#2C313A;
+    --primary:#4D8DFF; --primary-ink:#FFFFFF; --over:#FF5C7A; --spare:#FFB938; --grid:#1E2229;
+    --shadow:none; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1115; --surface:#191C22; --surface-2:#22262E; --ink:#F4F5F7; --muted:#9AA3B2; --line:#2C313A;
+  --primary:#4D8DFF; --primary-ink:#FFFFFF; --over:#FF5C7A; --spare:#FFB938; --grid:#1E2229;
+  --shadow:none; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1320px;margin:0 auto;padding:28px 20px 60px}
+header.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;margin-bottom:22px}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{display:flex;width:44px;height:44px;border-radius:12px;overflow:hidden;flex:none}
+.logo i{flex:1}
+h1{font-size:30px;line-height:1.1;margin:0;font-weight:800;letter-spacing:-.025em}
+.sub{color:var(--muted);margin:4px 0 0;font-size:14px}
+.tabs{display:flex;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px}
+.tabs a{padding:8px 16px;border-radius:9px;text-decoration:none;color:var(--muted);font-weight:600;font-size:14px}
+.tabs a[aria-current="page"]{background:var(--ink);color:var(--bg)}
+/* stats as a palette strip */
+.stats{display:grid;grid-template-columns:repeat(6,1fr);border-radius:18px;overflow:hidden;margin-bottom:26px;box-shadow:var(--shadow)}
+@media (max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:520px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:18px 18px 16px;min-height:112px;display:flex;flex-direction:column;justify-content:space-between}
+.stat b{font-size:34px;line-height:1;font-weight:800;letter-spacing:-.03em}
+.stat span{font-size:13px;font-weight:600;opacity:.85}
+.btn{border:1px solid var(--line);background:var(--surface);padding:8px 15px;border-radius:10px;cursor:pointer;font-weight:600;font-size:14px}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:var(--primary-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.danger{color:var(--over);border-color:var(--over);background:transparent}
+.btn.small{padding:5px 11px;font-size:13px;border-radius:8px}
+:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:860px){.layout{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.panel-head h2{font-size:15px;margin:0;font-weight:700}
+.plist{list-style:none;margin:0;padding:8px}
+.plist button{width:100%;text-align:left;display:flex;align-items:center;gap:10px;padding:10px;border:0;background:transparent;border-radius:10px;cursor:pointer;font-weight:500}
+.plist button:hover{background:var(--surface-2)}
+.plist button[aria-current="true"]{background:var(--surface-2);font-weight:700}
+.dot{width:14px;height:14px;border-radius:5px;flex:none}
+.plist .count{margin-left:auto;color:var(--muted);font-size:13px;font-weight:500}
+.empty{padding:32px 20px;color:var(--muted);text-align:center}
+.chart-head{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+.chart-head h2{margin:0;font-size:22px;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.chart-head p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+/* canvas */
+.canvas-scroll{overflow:auto;max-height:72vh;border-bottom:1px solid var(--line);background-color:var(--surface);
+  background-image:radial-gradient(var(--grid) 1.4px,transparent 1.4px);background-size:22px 22px}
+.canvas{position:relative;min-width:100%}
+svg.links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.card{position:absolute;width:210px;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);user-select:none;-webkit-user-select:none;touch-action:none}
+.card.edit{cursor:grab}
+.card.dragging{cursor:grabbing;box-shadow:0 12px 30px rgba(14,14,16,.18);z-index:5}
+.card.target{outline:3px solid var(--primary);outline-offset:2px}
+.card-strip{height:8px;border-radius:16px 16px 0 0;background:var(--c)}
+.card-body{padding:10px 14px 12px;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center}
+.av{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:13px;grid-row:span 2}
+.card .nm{font-weight:700;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card .rl{color:var(--muted);font-size:12.5px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card .pct{grid-column:1 / -1;display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px;color:var(--muted)}
+.card .pct strong{color:var(--ink);font-size:13px}
+.mini{flex:1;height:6px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.mini i{display:block;height:100%;border-radius:4px}
+.card.root{width:240px;border:0;background:var(--c);color:var(--on)}
+.card.root .card-body{display:block;padding:16px 18px;text-align:center}
+.card.root .nm{font-size:18px;font-weight:800;white-space:normal}
+.card.root .rl{color:var(--on);opacity:.8}
+.flag{grid-column:1 / -1;justify-self:start;font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:color-mix(in srgb,var(--over) 14%,transparent);color:var(--over)}
+.handle{position:absolute;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--surface);border:3px solid var(--c);cursor:crosshair;z-index:2;touch-action:none}
+.handle::after{content:"";position:absolute;inset:-10px}
+.handle.top{top:-8px}
+.handle.bot{bottom:-8px}
+.card.root .handle{border-color:var(--ink)}
+.handle:hover{background:var(--c);transform:scale(1.15)}
+.linkhit{pointer-events:stroke;cursor:pointer}
+.linkpop{position:absolute;z-index:10;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 32px rgba(0,0,0,.2);padding:12px;display:flex;flex-direction:column;gap:10px;width:240px;font-size:13px}
+.linkpop p{margin:0;color:var(--muted)}
+.linkpop p b{color:var(--ink)}
+.canvas-tip{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--muted);font-size:13px;padding:12px 18px}
+/* pool */
+.pool{padding:16px 18px 18px}
+.pool h3{margin:0 0 4px;font-size:16px;font-weight:800}
+.pool > p{margin:0 0 12px;color:var(--muted);font-size:13.5px}
+.pool-list{display:flex;flex-wrap:wrap;gap:10px}
+.pcard{display:flex;align-items:center;gap:10px;padding:10px 12px;border:2px dashed var(--line);border-radius:14px;background:var(--surface-2);min-width:240px}
+.pcard .nm{font-weight:700;display:block;line-height:1.2}
+.pcard .rl{color:var(--muted);font-size:12.5px;display:block}
+.pcard .acts{margin-left:auto;display:flex;gap:6px}
+/* people */
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
+.toolbar input,.toolbar select{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 11px}
+.toolbar input{flex:1;min-width:180px}
+.table-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:780px}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+td.who{display:flex;gap:10px;align-items:center}
+td.who b{display:block;line-height:1.2}
+td.who span{color:var(--muted);font-size:13px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:8px;padding:3px 9px;font-size:13px;background:var(--surface);font-weight:500}
+.chip .dot{width:10px;height:10px;border-radius:3px}
+.chip.adhoc{border-style:dashed;background:var(--surface-2)}
+button.chip{cursor:pointer}
+.chip em{font-style:normal;color:var(--muted)}
+.alloc{min-width:210px}
+.bar{height:12px;border-radius:6px;background:var(--surface-2);overflow:hidden;display:flex}
+.bar i{display:block;height:100%}
+.alloc-num{display:flex;justify-content:space-between;font-size:13px;margin-top:6px;color:var(--muted)}
+.alloc-num strong{color:var(--ink)}
+.alloc-num .over{color:var(--over);font-weight:700}
+.alloc-num .spare{color:var(--spare);font-weight:600}
+.oncall{font-size:12.5px;color:var(--muted);margin-top:4px}
+.notice{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:16px;color:var(--muted);font-size:14px}
+/* dialog */
+dialog{border:0;border-radius:20px;padding:0;background:var(--surface);color:var(--ink);width:min(480px,calc(100vw - 32px));box-shadow:0 20px 60px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(10,12,16,.5)}
+.dlg{padding:22px}
+.dlg h3{margin:0 0 16px;font-size:20px;font-weight:800;letter-spacing:-.02em}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field > label,.field > .lbl{font-size:13px;font-weight:600;color:var(--muted)}
+.field input[type=text],.field input:not([type]),.field input[type=number],.field select{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 11px}
+.field small{color:var(--muted);font-size:12px}
+.swatches{display:grid;grid-template-columns:repeat(12,1fr);gap:6px}
+@media (max-width:440px){.swatches{grid-template-columns:repeat(8,1fr)}}
+.swatches label{position:relative;aspect-ratio:1}
+.swatches input{position:absolute;opacity:0;pointer-events:none}
+.swatches span{display:block;width:100%;height:100%;border-radius:8px;cursor:pointer}
+.swatches input:checked + span{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--ink)}
+.swatches input:focus-visible + span{outline:2px solid var(--primary);outline-offset:3px}
+.custom-color{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:13px;color:var(--muted)}
+.custom-color input{width:44px;height:30px;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--surface);cursor:pointer}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg label{display:block;position:relative}
+.seg input{position:absolute;opacity:0}
+.seg span{display:block;border:2px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;font-size:13px;color:var(--muted)}
+.seg span b{display:block;color:var(--ink);font-size:14px}
+.seg input:checked + span{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 8%,transparent)}
+.seg input:focus-visible + span{outline:2px solid var(--primary);outline-offset:2px}
+.dlg-foot{display:flex;justify-content:space-between;gap:8px;margin-top:8px}
+.dlg-foot .right{display:flex;gap:8px;margin-left:auto}
+.err{color:var(--over);font-size:13px;min-height:1em;margin:0 0 8px}
+.hint{color:var(--muted);font-size:13px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;font-weight:600;z-index:50;opacity:0;pointer-events:none}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion:no-preference){.toast{transition:opacity .2s}.handle{transition:transform .1s}}
+.userbox{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.userbox b{color:var(--ink)}
+.right-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+dialog.wide{width:min(720px,calc(100vw - 32px))}
+.hist{list-style:none;margin:0;padding:0;max-height:60vh;overflow:auto;border:1px solid var(--line);border-radius:12px}
+.hist li{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.hist li:last-child{border-bottom:0}
+.hist .what{font-weight:600}
+.hist .meta{color:var(--muted);font-size:12.5px;grid-column:1}
+.hist .act{grid-row:1 / span 2;grid-column:2;align-self:center}
+.hist li.restore{background:color-mix(in srgb,var(--primary) 7%,transparent)}
+.hist-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.check{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink)}
+.members{list-style:none;margin:0 0 12px;padding:0;border:1px solid var(--line);border-radius:12px}
+.members li{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);font-size:14px}
+.members li:last-child{border-bottom:0}
+.members li span{flex:1;overflow:hidden;text-overflow:ellipsis}
+.members select,.addrow input,.addrow select,.linkrow input{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 10px}
+.addrow,.linkrow{display:flex;gap:8px;flex-wrap:wrap}
+.addrow input{flex:1;min-width:180px}
+.linkrow input{flex:1;min-width:200px;font-size:13px}
+.welcome{padding:40px 24px;text-align:center}
+.welcome h2{margin:0 0 8px;font-size:22px;font-weight:800}
+.welcome p{color:var(--muted);margin:0 0 16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"><i style="background:#FF006E"></i><i style="background:#FFBE0B"></i><i style="background:#3A86FF"></i><i style="background:#06D6A0"></i></div>
+      <div>
+        <h1>Project organogram</h1>
+        <p class="sub">Who works on what, and how much of each person is committed.</p>
+      </div>
+    </div>
+    <div class="right-head">
+      <nav class="tabs" aria-label="Views">
+        <a href="#projects" data-view="projects">Projects</a>
+        <a href="#people" data-view="people">People and allocation</a>
+      </nav>
+      <div class="userbox" id="userbox"></div>
+    </div>
+  </header>
+  <div id="notice"></div>
+  <section class="stats" id="stats" aria-label="Summary"></section>
+  <main id="main"></main>
+</div>
+<dialog id="dlg"><form method="dialog" class="dlg" id="dlgForm"></form></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js"></script>
+<script>
+(function(){
+  "use strict";
+  /* ====== SETTINGS: paste your Supabase details here ====== */
+  var SUPABASE_URL="PASTE_YOUR_SUPABASE_PROJECT_URL";
+  var SUPABASE_KEY="PASTE_YOUR_SUPABASE_ANON_PUBLIC_KEY";
+  /* ======================================================== */
+
+  var COLORS=["#FF006E","#F72585","#FF5D8F","#EF476F","#E63946","#FB5607","#FF9F1C","#FFBE0B","#FEE440","#80ED99","#38B000","#06D6A0",
+              "#2EC4B6","#00F5D4","#4CC9F0","#00BBF9","#3A86FF","#118AB2","#4361EE","#7209B7","#8338EC","#9B5DE5","#F15BB5","#B5179E"];
+  var STAT_COLORS=["#3A86FF","#8338EC","#06D6A0","#FFBE0B","#FF006E","#FB5607"];
+  var CARD_W=210, ROOT_W=240, SLOT=240, LEVEL=170, PAD=40;
+  var sb=null;
+  var S={people:{},projects:{},assign:{},members:[],myRoles:{},isAdmin:false,email:"",totals:{},
+    loaded:false,view:"projects",sel:null,search:"",filter:"all",status:"loading",
+    dragging:false,pending:false,parentOf:{},keyPerson:{},selLink:null,showMoves:false};
+
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];});}
+  function byName(a,b){return (a.name||"").localeCompare(b.name||"");}
+  function list(o){return Object.keys(o).map(function(k){return o[k];});}
+  function isHex(c){return /^#[0-9a-fA-F]{6}$/.test(c||"");}
+  function pc(p){return isHex(p&&p.color)?p.color:COLORS[16];}
+  function onColor(hex){
+    var r=parseInt(hex.substr(1,2),16)/255,g=parseInt(hex.substr(3,2),16)/255,b=parseInt(hex.substr(5,2),16)/255;
+    function l(c){return c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4);}
+    return (0.2126*l(r)+0.7152*l(g)+0.0722*l(b))>0.36?"#0E0E10":"#FFFFFF";
+  }
+  function personColor(id){var h=0;for(var i=0;i<id.length;i++)h=(h*31+id.charCodeAt(i))>>>0;return COLORS[h%COLORS.length];}
+  function initials(n){var p=String(n||"?").trim().split(/\s+/);return ((p[0]||"?")[0]+(p.length>1?p[p.length-1][0]:"")).toUpperCase();}
+  function avatar(p){var c=personColor(p.id);return '<span class="av" style="background:'+c+';color:'+onColor(c)+'">'+esc(initials(p.name))+'</span>';}
+  function isAdhoc(a){return a.mode==="adhoc";}
+  function num(v){return typeof v==="number"&&isFinite(v);}
+  function canEdit(pid){return S.isAdmin||S.myRoles[pid]==="editor";}
+  function editorAny(){return S.isAdmin||Object.keys(S.myRoles).some(function(k){return S.myRoles[k]==="editor";});}
+
+  function localCore(){
+    var t={};list(S.people).forEach(function(p){t[p.id]=0;});
+    list(S.assign).forEach(function(a){if(t[a.person_id]!=null&&S.projects[a.project_id]&&!isAdhoc(a)) t[a.person_id]+=Number(a.percent)||0;});
+    return t;
+  }
+  function totals(){
+    var lc=localCore(),t={};
+    Object.keys(lc).forEach(function(id){var srv=S.totals[id];t[id]=srv?srv.core:lc[id];});
+    return t;
+  }
+  function projAssign(pid){return list(S.assign).filter(function(a){return a.project_id===pid && S.people[a.person_id];});}
+  function personAssign(id){return list(S.assign).filter(function(a){return a.person_id===id && S.projects[a.project_id];});}
+
+  var toastT;
+  function toast(msg){var t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove("show");},2800);}
+
+  async function run(q){
+    var r=await q;
+    if(r.error){
+      var m=r.error.message||"";var e=new Error(m);
+      e.userMsg=/row-level security|permission|42501/i.test(m+(r.error.code||""))?"You don't have permission to make this change.":"This change could not be saved. "+m;
+      throw e;
+    }
+    return r.data;
+  }
+
+  /* ---------- url ---------- */
+  function shareLink(pid){return location.origin+location.pathname+"?project="+encodeURIComponent(pid);}
+  function setUrlProject(pid){
+    var u=new URL(location.href);
+    if(pid) u.searchParams.set("project",pid); else u.searchParams.delete("project");
+    history.replaceState(null,"",u.pathname+u.search+u.hash);
+  }
+
+  /* ---------- rendering ---------- */
+  function render(){
+    if(S.dragging){S.pending=true;return;}
+    document.querySelectorAll(".tabs a").forEach(function(a){
+      if(a.dataset.view===S.view) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+    });
+    renderUser();renderNotice();renderStats();
+    var m=document.getElementById("main");
+    if(S.status==="nosetup"){m.innerHTML='<div class="panel welcome"><h2>Almost ready</h2><p>Open index.html and paste your Supabase project URL and anon key at the top of the script. The README explains where to find them.</p></div>';return;}
+    if(!S.loaded){m.innerHTML='<div class="panel empty">Loading projects and people</div>';return;}
+    if(!list(S.projects).length && !S.email){
+      m.innerHTML='<div class="panel welcome"><h2>Sign in to see your projects</h2><p>'+(new URL(location.href).searchParams.get("project")?"This project is not shared publicly. Sign in with the account you were given to open it.":"Use the email and password your admin created for you.")+'</p><button class="btn primary" data-act="signin">Sign in</button></div>';
+      return;
+    }
+    if(S.view==="people") renderPeople(m); else renderProjects(m);
+  }
+
+  function renderUser(){
+    var el=document.getElementById("userbox");
+    if(S.status==="nosetup"){el.innerHTML="";return;}
+    if(!S.email){el.innerHTML='<button class="btn small primary" data-act="signin">Sign in</button>';return;}
+    el.innerHTML='<span>Signed in as <b>'+esc(S.email)+'</b>'+(S.isAdmin?' (admin)':'')+'</span><button class="btn small" data-act="password">Change password</button><button class="btn small" data-act="signout">Sign out</button>';
+  }
+
+  function renderNotice(){
+    var n=document.getElementById("notice"),msg="";
+    if(S.status==="error") msg="The data could not be loaded. Check your connection and reload the page.";
+    else if(S.loaded && S.sel && !canEdit(S.sel) && S.view==="projects") msg=S.email?"You can view this project. Ask the admin for editor access to make changes.":"You are viewing a shared project. Sign in to make changes if you have access.";
+    n.innerHTML=msg?'<div class="notice">'+esc(msg)+'</div>':"";
+  }
+
+  function renderStats(){
+    var el=document.getElementById("stats");
+    if(!S.loaded){el.innerHTML="";return;}
+    var t=totals(),ppl=list(S.people);
+    var assigned=ppl.filter(function(p){return t[p.id]>0;}).length;
+    var over=ppl.filter(function(p){return t[p.id]>100;}).length;
+    var oncall=ppl.filter(function(p){var s=S.totals[p.id];return (s&&s.adhoc>0)||personAssign(p.id).some(isAdhoc);}).length;
+    var avg=ppl.length?Math.round(ppl.reduce(function(s,p){return s+t[p.id];},0)/ppl.length):0;
+    var items=[[ppl.length,"People in total"],[list(S.projects).length,"Projects"],[assigned,"On a core team"],
+      [avg+"%","Average allocation"],[over,"Over 100%"],[oncall,"On call (ad hoc)"]];
+    el.innerHTML=items.map(function(it,i){var c=STAT_COLORS[i];
+      return '<div class="stat" style="background:'+c+';color:'+onColor(c)+'"><b>'+esc(it[0])+'</b><span>'+esc(it[1])+'</span></div>';}).join("");
+  }
+
+  function renderProjects(m){
+    S.selLink=null;
+    var projs=list(S.projects).sort(byName);
+    if(S.sel && !S.projects[S.sel]) S.sel=null;
+    if(!S.sel && projs.length){S.sel=projs[0].id;setUrlProject(S.sel);}
+    var side='<aside class="panel"><div class="panel-head"><h2>Projects</h2>'+
+      (S.isAdmin?'<button class="btn small primary" data-act="new-project">New project</button>':"")+'</div>';
+    if(!projs.length) side+='<div class="empty">No projects yet.'+(S.isAdmin?' Create one to start building its team.':' Ask the admin to share a project with you.')+'</div>';
+    else side+='<ul class="plist">'+projs.map(function(p){
+        var n=projAssign(p.id).filter(function(a){return !isAdhoc(a);}).length;
+        return '<li><button data-act="select" data-id="'+esc(p.id)+'" aria-current="'+(p.id===S.sel)+'"><span class="dot" style="background:'+pc(p)+'"></span>'+
+          esc(p.name)+'<span class="count">'+n+'</span></button></li>';
+      }).join("")+'</ul>';
+    side+='</aside>';
+    m.innerHTML='<div class="layout">'+side+'<section class="panel" id="chart">'+chartHtml()+'</section></div>';
+    drawLinks();
+  }
+
+  function buildTree(p){
+    var core=projAssign(p.id).filter(function(a){return !isAdhoc(a);});
+    var byPerson={};core.forEach(function(a){byPerson[a.person_id]=a;});
+    function loops(pid){var seen={},cur=pid,g=0;while(cur&&byPerson[cur]&&g++<500){if(seen[cur])return true;seen[cur]=1;cur=byPerson[cur].reports_to;}return false;}
+    var parentOf={},kids={root:[]};
+    core.forEach(function(a){
+      var r=a.reports_to,pk="root";
+      if(r==="__none"){kids.root.push(a.id);return;}
+      if(r && byPerson[r] && r!==a.person_id && !loops(a.person_id)) pk=byPerson[r].id;
+      parentOf[a.id]=pk;(kids[pk]=kids[pk]||[]).push(a.id);
+    });
+    Object.keys(kids).forEach(function(k){kids[k].sort(function(x,y){return (S.people[S.assign[x].person_id].name||"").localeCompare(S.people[S.assign[y].person_id].name||"");});});
+    var auto={};
+    function slots(k){var c=kids[k]||[];if(!c.length)return 1;return c.reduce(function(s,x){return s+slots(x);},0);}
+    function place(k,depth,left){
+      var w=slots(k)*SLOT,cw=k==="root"?ROOT_W:CARD_W;
+      auto[k]={x:Math.round(left+(w-cw)/2),y:PAD+depth*LEVEL};
+      var l=left;(kids[k]||[]).forEach(function(c){place(c,depth+1,l);l+=slots(c)*SLOT;});
+    }
+    place("root",0,PAD);
+    var pos={};
+    pos.root=(num(p.root_x)&&num(p.root_y))?{x:p.root_x,y:p.root_y}:auto.root;
+    core.forEach(function(a){pos[a.id]=(num(a.x)&&num(a.y))?{x:a.x,y:a.y}:auto[a.id];});
+    var keyPerson={root:""};core.forEach(function(a){keyPerson[a.id]=a.person_id;});
+    return {core:core,parentOf:parentOf,pos:pos,keyPerson:keyPerson};
+  }
+
+  function chartHtml(){
+    var p=S.projects[S.sel];
+    if(!p) return '<div class="empty">'+(S.isAdmin?'Create a project, add people, then assign them to see the organogram here.':'No project selected.')+'</div>';
+    var ed=canEdit(p.id),all=projAssign(p.id),pool=all.filter(isAdhoc),tr=buildTree(p),t=totals(),color=pc(p);
+    S.parentOf=tr.parentOf;S.keyPerson=tr.keyPerson;
+    var fte=tr.core.reduce(function(s,a){return s+(Number(a.percent)||0);},0)/100;
+    var head='<div class="chart-head"><div><h2><span class="dot" style="background:'+color+';width:18px;height:18px;border-radius:6px"></span>'+esc(p.name)+'</h2><p>'+(p.description?esc(p.description)+'. ':'')+
+      tr.core.length+' core '+(tr.core.length===1?'member':'members')+', '+(Math.round(fte*100)/100)+' full-time equivalent, '+pool.length+' on call</p></div>'+
+      '<div class="actions">'+(S.email?'<button class="btn small" data-act="history">History</button>':'')+
+      (S.isAdmin?'<button class="btn small" data-act="share">Share</button>':'<button class="btn small" data-act="copylink">Copy link</button>')+
+      (ed?'<button class="btn small" data-act="arrange">Auto arrange</button><button class="btn small" data-act="edit-project" data-id="'+esc(p.id)+'">Edit project</button>'+
+      '<button class="btn small primary" data-act="new-assign" data-project="'+esc(p.id)+'">Add person</button>':'')+'</div></div>';
+    var maxX=0,maxY=0;Object.keys(tr.pos).forEach(function(k){maxX=Math.max(maxX,tr.pos[k].x);maxY=Math.max(maxY,tr.pos[k].y);});
+    var cards=cardHtml("root",p,null,tr.pos.root,color,t,ed);
+    tr.core.forEach(function(a){cards+=cardHtml(a.id,p,a,tr.pos[a.id],color,t,ed);});
+    var canvas='<div class="canvas-scroll" id="cscroll"><div class="canvas" id="canvas" style="width:'+(maxX+CARD_W+PAD*4)+'px;height:'+(maxY+260)+'px">'+
+      '<svg class="links" id="links" aria-hidden="true"></svg>'+cards+'</div></div>';
+    var tip='<div class="canvas-tip">'+(ed?'<span>Drag a card to move it.</span><span>Drag the dot on top of a card onto another card to change who that person reports to. Drop it on empty space to report to the project.</span><span>Drag the dot below a card onto someone to make them report to it.</span><span>Click a line to delete it, or drag either end of a line onto a different card.</span><span>Click a card to edit it.</span>':'<span>Lines show who reports to whom. The bar shows time given to this project.</span>')+'</div>';
+    var poolHtml='<div class="pool"><h3>On-call pool</h3><p>People who join this project on an ad hoc basis, only when needed. Their time is not counted in their allocation until they are brought in.</p>';
+    if(!pool.length) poolHtml+='<p class="hint">Nobody is on call for this project.'+(ed?' Use Add person and choose "Ad hoc, joins when needed".':'')+'</p>';
+    else poolHtml+='<div class="pool-list">'+pool.sort(function(x,y){return byName(S.people[x.person_id],S.people[y.person_id]);}).map(function(a){
+      var per=S.people[a.person_id],v=Number(a.percent)||0;
+      return '<div class="pcard">'+avatar(per)+'<div><span class="nm">'+esc(per.name)+'</span><span class="rl">'+esc(a.role||per.title||"Team member")+(v?', up to '+v+'%':'')+'</span></div>'+
+        (ed?'<div class="acts"><button class="btn small primary" data-act="activate" data-id="'+esc(a.id)+'">Bring in</button><button class="btn small" data-act="edit-assign" data-id="'+esc(a.id)+'">Edit</button></div>':'')+'</div>';
+    }).join("")+'</div>';
+    poolHtml+='</div>';
+    if(!tr.core.length && !pool.length) return head+'<div class="empty">Nobody is on this project yet.'+(ed?' Use Add person to build the team.':'')+'</div>';
+    return head+canvas+tip+poolHtml;
+  }
+
+  function cardHtml(key,p,a,pos,color,t,ed){
+    var attrs=' data-key="'+esc(key)+'" style="left:'+pos.x+'px;top:'+pos.y+'px;--c:'+color+';--on:'+onColor(color)+'"'+(ed?' tabindex="0"':'');
+    if(key==="root"){
+      return '<div class="card root'+(ed?' edit':'')+'"'+attrs+' aria-label="Project '+esc(p.name)+'"><div class="card-body"><span class="nm">'+esc(p.name)+'</span><span class="rl">'+esc(p.description||"Project")+'</span></div>'+
+        (ed?'<span class="handle bot" data-handle="bot" title="Drag onto a person to make them report to the project"></span>':'')+'</div>';
+    }
+    var per=S.people[a.person_id],tot=t[a.person_id],v=Number(a.percent)||0;
+    return '<div class="card'+(ed?' edit':'')+'"'+attrs+' aria-label="'+esc(per.name)+', '+v+' percent">'+
+      (ed?'<span class="handle top" data-handle="top" title="Drag onto a new manager"></span>':'')+
+      '<div class="card-strip"></div><div class="card-body">'+avatar(per)+'<span class="nm">'+esc(per.name)+'</span><span class="rl">'+esc(a.role||per.title||"Team member")+'</span>'+
+      '<span class="pct"><strong>'+v+'%</strong><span class="mini"><i style="width:'+Math.min(v,100)+'%;background:'+color+'"></i></span></span>'+
+      (tot>100?'<span class="flag">Total '+tot+'% across projects</span>':'')+'</div>'+
+      (ed?'<span class="handle bot" data-handle="bot" title="Drag onto someone to make them report here"></span>':'')+'</div>';
+  }
+
+  function cardEl(k){return document.querySelector('.card[data-key="'+CSS.escape(k)+'"]');}
+  function box(el){return {x:el.offsetLeft,y:el.offsetTop,w:el.offsetWidth,h:el.offsetHeight};}
+  function curve(x1,y1,x2,y2){var dy=Math.max(40,Math.abs(y2-y1)/2);return "M"+x1+" "+y1+" C"+x1+" "+(y1+dy)+","+x2+" "+(y2-dy)+","+x2+" "+y2;}
+  function drawLinks(extra,skip){
+    var svg=document.getElementById("links");if(!svg) return;
+    var p=S.projects[S.sel],color=pc(p),out="",hits="",ed=canEdit(S.sel);
+    Object.keys(S.parentOf).forEach(function(k){
+      if(k===skip) return;
+      var c=cardEl(k),pe=cardEl(S.parentOf[k]);if(!c||!pe) return;
+      var a=box(c),b=box(pe),d=curve(b.x+b.w/2,b.y+b.h,a.x+a.w/2,a.y),sel=S.selLink===k;
+      out+='<path d="'+d+'" fill="none" stroke="'+(sel?'var(--primary)':color)+'" stroke-width="'+(sel?5:3)+'" stroke-linecap="round" opacity="'+(sel?1:.85)+'"/>';
+      if(ed) hits+='<path class="linkhit" data-link="'+esc(k)+'" d="'+d+'" fill="none" stroke="transparent" stroke-width="18"><title>Click to delete, or drag an end to another card</title></path>';
+    });
+    out+=hits;
+    if(extra) out+='<path d="'+extra+'" fill="none" stroke="var(--primary)" stroke-width="3" stroke-dasharray="7 6" stroke-linecap="round"/>';
+    svg.innerHTML=out;
+  }
+
+  /* ---------- canvas interaction ---------- */
+  var drag=null;
+  function canvasPoint(ev){var c=document.getElementById("canvas").getBoundingClientRect();return {x:ev.clientX-c.left,y:ev.clientY-c.top};}
+  function cardUnder(ev){
+    var els=document.elementsFromPoint(ev.clientX,ev.clientY);
+    for(var i=0;i<els.length;i++){var c=els[i].closest&&els[i].closest(".card");if(c && (!drag||c!==drag.el)) return c;}
+    return null;
+  }
+  function isAncestor(anc,k){var g=0;while(k&&g++<500){if(k===anc)return true;k=S.parentOf[k];}return false;}
+
+  document.addEventListener("pointerdown",function(ev){
+    if(!(ev.target.closest&&ev.target.closest(".linkpop"))) closePop();
+    if(!S.sel||!canEdit(S.sel)||ev.button>0) return;
+    var hit=ev.target.closest&&ev.target.closest(".linkhit");
+    if(hit){
+      var lk=hit.dataset.link,cv=document.getElementById("canvas"),lpt=canvasPoint(ev);
+      var lce=cardEl(lk),lpe=cardEl(S.parentOf[lk]);if(!cv||!lce||!lpe) return;
+      ev.preventDefault();
+      var la=box(lce),lb=box(lpe);
+      var dP=Math.hypot(lpt.x-(lb.x+lb.w/2),lpt.y-(lb.y+lb.h)),dC=Math.hypot(lpt.x-(la.x+la.w/2),lpt.y-la.y);
+      drag={el:cv,key:lk,mode:dC<dP?"lchild":"lparent",sx:ev.clientX,sy:ev.clientY,moved:false,target:null,pid:ev.pointerId,cx:lpt.x,cy:lpt.y};
+      try{cv.setPointerCapture(ev.pointerId);}catch(e){}
+      S.dragging=true;return;
+    }
+    var card=ev.target.closest(".card");if(!card||!document.getElementById("canvas")) return;
+    var handle=ev.target.closest(".handle");
+    ev.preventDefault();
+    drag={el:card,key:card.dataset.key,mode:handle?handle.dataset.handle:"move",sx:ev.clientX,sy:ev.clientY,ox:card.offsetLeft,oy:card.offsetTop,moved:false,target:null,pid:ev.pointerId};
+    try{card.setPointerCapture(ev.pointerId);}catch(e){}
+    S.dragging=true;
+    if(drag.mode==="move") card.classList.add("dragging");
+  });
+  document.addEventListener("pointermove",function(ev){
+    if(!drag||ev.pointerId!==drag.pid) return;
+    var dx=ev.clientX-drag.sx,dy=ev.clientY-drag.sy;
+    if(!drag.moved && Math.abs(dx)+Math.abs(dy)<5) return;
+    drag.moved=true;
+    if(drag.mode==="move"){
+      drag.el.style.left=Math.max(0,drag.ox+dx)+"px";drag.el.style.top=Math.max(0,drag.oy+dy)+"px";
+      growCanvas(drag.el);drawLinks();return;
+    }
+    var pt=canvasPoint(ev),path,skip=null;
+    if(drag.mode==="lparent"||drag.mode==="lchild"){
+      var ce=box(cardEl(drag.key)),pe=box(cardEl(S.parentOf[drag.key]));skip=drag.key;
+      path=drag.mode==="lparent"?curve(pt.x,pt.y,ce.x+ce.w/2,ce.y):curve(pe.x+pe.w/2,pe.y+pe.h,pt.x,pt.y);
+    } else {
+      var b=box(drag.el);
+      path=drag.mode==="top"?curve(pt.x,pt.y,b.x+b.w/2,b.y):curve(b.x+b.w/2,b.y+b.h,pt.x,pt.y);
+    }
+    var t=cardUnder(ev);
+    if(drag.target&&drag.target!==t) drag.target.classList.remove("target");
+    drag.target=t;if(t) t.classList.add("target");
+    drawLinks(path,skip);
+  });
+  function growCanvas(el){
+    var cv=document.getElementById("canvas");
+    var needW=el.offsetLeft+el.offsetWidth+PAD*2,needH=el.offsetTop+el.offsetHeight+PAD*2;
+    if(needW>cv.offsetWidth) cv.style.width=needW+"px";
+    if(needH>cv.offsetHeight) cv.style.height=needH+"px";
+  }
+  async function endDrag(ev,cancel){
+    if(!drag||ev.pointerId!==drag.pid) return;
+    var d=drag;drag=null;
+    d.el.classList.remove("dragging");if(d.target) d.target.classList.remove("target");
+    S.dragging=false;
+    try{
+      if(cancel){render();return;}
+      if(!d.moved){
+        if(S.pending){S.pending=false;render();}
+        if(d.mode==="lparent"||d.mode==="lchild") openPop(d.key,d.cx,d.cy);
+        else if(d.mode==="move") openCard(d.key);
+        else drawLinks();
+        return;
+      }
+      if(d.mode==="move") await saveMove(d); else await saveLink(d);
+    }catch(e){toast(e.userMsg||"That change could not be saved.");scheduleReload();}
+    if(S.pending){S.pending=false;render();} else drawLinks();
+  }
+  document.addEventListener("pointerup",function(ev){endDrag(ev,false);});
+  document.addEventListener("pointercancel",function(ev){endDrag(ev,true);});
+
+  async function saveMove(d){
+    var x=Math.round(d.el.offsetLeft),y=Math.round(d.el.offsetTop),p=S.projects[S.sel];
+    if(d.key==="root"){p.root_x=x;p.root_y=y;await run(sb.from("projects").update({root_x:x,root_y:y}).eq("id",p.id));}
+    else{var a=S.assign[d.key];if(!a)return;a.x=x;a.y=y;await run(sb.from("assignments").update({x:x,y:y}).eq("id",a.id));}
+  }
+  function nm(pid){return S.people[pid]?S.people[pid].name:"someone";}
+  async function saveLink(d){
+    var tk=d.target?d.target.dataset.key:null;
+    if(d.mode==="lchild"){
+      var parentKey=S.parentOf[d.key];
+      if(!tk||tk==="root"){toast("Drop the end of the line on a person card.");drawLinks();return;}
+      if(tk===d.key||parentKey==null){drawLinks();return;}
+      if(isAncestor(tk,parentKey)){toast("Someone can't report to a person who reports to them.");drawLinks();return;}
+      var oldA=S.assign[d.key],newA=S.assign[tk],mgr=S.keyPerson[parentKey]||"";
+      newA.reports_to=mgr;oldA.reports_to="__none";S.parentOf[tk]=parentKey;delete S.parentOf[d.key];
+      drawLinks();
+      await run(sb.from("assignments").update({reports_to:mgr}).eq("id",newA.id));
+      await run(sb.from("assignments").update({reports_to:"__none"}).eq("id",oldA.id));
+      toast(nm(newA.person_id)+" now reports to "+(parentKey==="root"?"the project":nm(mgr)));
+      return;
+    }
+    if(d.mode==="top"||d.mode==="lparent"){
+      if(d.key==="root") return;
+      var newParent=tk||"root";
+      if(newParent!=="root" && isAncestor(d.key,newParent)){toast("Someone can't report to a person who reports to them.");drawLinks();return;}
+      if(S.parentOf[d.key]===newParent){drawLinks();return;}
+      var a=S.assign[d.key];a.reports_to=S.keyPerson[newParent]||"";S.parentOf[d.key]=newParent;
+      drawLinks();
+      await run(sb.from("assignments").update({reports_to:a.reports_to}).eq("id",a.id));
+      toast(newParent==="root"?nm(a.person_id)+" now reports to the project":nm(a.person_id)+" now reports to "+nm(S.keyPerson[newParent]));
+    } else {
+      if(!tk||tk==="root"||tk===d.key){drawLinks();return;}
+      if(d.key!=="root" && isAncestor(tk,d.key)){toast("Someone can't report to a person who reports to them.");drawLinks();return;}
+      var b=S.assign[tk];b.reports_to=S.keyPerson[d.key]||"";S.parentOf[tk]=d.key;
+      drawLinks();
+      await run(sb.from("assignments").update({reports_to:b.reports_to}).eq("id",b.id));
+      toast(nm(b.person_id)+" now reports to "+(d.key==="root"?"the project":nm(S.keyPerson[d.key])));
+    }
+  }
+  function closePop(){var p=document.getElementById("linkpop");if(p)p.remove();if(S.selLink){S.selLink=null;drawLinks();}}
+  function openPop(k,x,y){
+    closePop();var cv=document.getElementById("canvas");if(!cv||!S.assign[k])return;
+    S.selLink=k;drawLinks();
+    var a=S.assign[k],pk=S.parentOf[k],to=pk==="root"?"the project":nm(S.keyPerson[pk]);
+    var d=document.createElement("div");d.className="linkpop";d.id="linkpop";
+    d.style.left=Math.max(8,Math.min(x+12,cv.offsetWidth-252))+"px";d.style.top=(y+12)+"px";
+    d.innerHTML='<p><b>'+esc(nm(a.person_id))+'</b> reports to <b>'+esc(to)+'</b>. Drag either end of the line onto another card to move it.</p><div class="actions"><button type="button" class="btn small danger" data-act="del-link">Delete line</button><button type="button" class="btn small" data-act="close-pop">Close</button></div>';
+    cv.appendChild(d);d.querySelector("button").focus();
+  }
+  async function deleteLink(){
+    var k=S.selLink;closePop();if(!k||!S.assign[k])return;
+    var a=S.assign[k];a.reports_to="__none";delete S.parentOf[k];drawLinks();
+    try{await run(sb.from("assignments").update({reports_to:"__none"}).eq("id",a.id));toast("Line deleted. "+nm(a.person_id)+" is not connected now.");}
+    catch(e){toast(e.userMsg);scheduleReload();}
+  }
+  document.addEventListener("keydown",function(ev){
+    if(!document.getElementById("linkpop")) return;
+    if(ev.key==="Escape") closePop();
+    else if((ev.key==="Delete"||ev.key==="Backspace")&&!(ev.target.matches&&ev.target.matches("input,select"))){ev.preventDefault();deleteLink();}
+  });
+  function openCard(k){if(k==="root") projectDialog(S.sel); else assignDialog({id:k});}
+  document.addEventListener("keydown",function(ev){
+    if(ev.key!=="Enter"||!S.sel||!canEdit(S.sel)) return;
+    var c=ev.target.closest&&ev.target.closest(".card");if(c&&ev.target===c){ev.preventDefault();openCard(c.dataset.key);}
+  });
+
+  async function autoArrange(){
+    var p=S.projects[S.sel];if(!p) return;
+    try{
+      await run(sb.from("projects").update({root_x:null,root_y:null}).eq("id",p.id));
+      await run(sb.from("assignments").update({x:null,y:null}).eq("project_id",p.id));
+      p.root_x=null;p.root_y=null;projAssign(p.id).forEach(function(a){a.x=null;a.y=null;});
+      render();toast("Cards arranged");
+    }catch(e){toast(e.userMsg);}
+  }
+
+  /* ---------- people view ---------- */
+  function renderPeople(m){
+    var t=totals(),q=S.search.trim().toLowerCase(),ed=editorAny();
+    var ppl=list(S.people).sort(byName).filter(function(p){
+      if(q && ((p.name||"")+" "+(p.title||"")).toLowerCase().indexOf(q)<0) return false;
+      var v=t[p.id];
+      if(S.filter==="over") return v>100;
+      if(S.filter==="spare") return v<100;
+      if(S.filter==="free") return v===0;
+      if(S.filter==="oncall") return personAssign(p.id).some(isAdhoc);
+      return true;
+    });
+    var h='<section class="panel"><div class="toolbar"><input type="search" id="q" placeholder="Search by name or title" value="'+esc(S.search)+'" aria-label="Search people">'+
+      '<select id="f" aria-label="Filter by allocation">'+opt("all","Everyone")+opt("over","Over-allocated")+opt("spare","Spare capacity")+opt("free","Not on a core team")+opt("oncall","On call somewhere")+'</select>'+
+      (ed?'<button class="btn primary" data-act="new-person">Add person</button><button class="btn" data-act="new-assign">Assign to project</button>':'')+'</div>';
+    function opt(v,l){return '<option value="'+v+'"'+(S.filter===v?' selected':'')+'>'+l+'</option>';}
+    if(!list(S.people).length) h+='<div class="empty">No people yet.'+(ed?' Add the people you want to plan, then assign them to projects.':'')+'</div>';
+    else if(!ppl.length) h+='<div class="empty">Nobody matches this search or filter.</div>';
+    else {
+      h+='<div class="table-scroll"><table><thead><tr><th>Person</th><th>Projects</th><th class="alloc">Core allocation</th>'+(ed?'<th></th>':'')+'</tr></thead><tbody>'+
+      ppl.map(function(p){
+        var as=personAssign(p.id).sort(function(a,b){return (isAdhoc(a)-isAdhoc(b))||(S.projects[a.project_id].name||"").localeCompare(S.projects[b.project_id].name||"");});
+        var core=as.filter(function(a){return !isAdhoc(a);}),adhoc=as.filter(isAdhoc),v=t[p.id];
+        var chips=as.length?'<div class="chips">'+as.map(function(a){
+          var pr=S.projects[a.project_id],ah=isAdhoc(a),val=Number(a.percent)||0;
+          var c='<span class="dot" style="background:'+pc(pr)+'"></span>'+esc(pr.name)+' <em>'+(ah?'on call':val+'%')+'</em>';
+          return canEdit(pr.id)?'<button class="chip'+(ah?' adhoc':'')+'" data-act="edit-assign" data-id="'+esc(a.id)+'">'+c+'</button>':'<span class="chip'+(ah?' adhoc':'')+'">'+c+'</span>';
+        }).join("")+'</div>':'<span class="hint">Not assigned</span>';
+        var seen=0;
+        var segs=core.map(function(a){var pr=S.projects[a.project_id],val=Number(a.percent)||0,w=v>100?val/v*100:val;seen+=val;
+          return '<i title="'+esc(pr.name)+' '+val+'%" style="width:'+w+'%;background:'+pc(pr)+'"></i>';}).join("");
+        var hidden=v-seen;
+        if(hidden>0) segs+='<i title="Other projects '+hidden+'%" style="width:'+(v>100?hidden/v*100:hidden)+'%;background:var(--muted);opacity:.5"></i>';
+        var state=v>100?'<span class="over">'+(v-100)+'% over</span>':v<100?'<span class="spare">'+(100-v)+'% free</span>':'<span>Fully allocated</span>';
+        return '<tr><td class="who">'+avatar(p)+'<div><b>'+esc(p.name)+'</b><span>'+esc(p.title||"")+'</span></div></td><td>'+chips+(hidden>0?'<div class="oncall">Plus '+hidden+'% on projects you can\'t see</div>':'')+'</td>'+
+          '<td class="alloc"><div class="bar" style="'+(v>100?'box-shadow:0 0 0 2px var(--over)':'')+'">'+segs+'</div><div class="alloc-num"><strong>'+v+'%</strong>'+state+'</div>'+
+          (adhoc.length?'<div class="oncall">On call for '+adhoc.length+' '+(adhoc.length===1?'project':'projects')+'</div>':'')+'</td>'+
+          (ed?'<td><div class="actions"><button class="btn small" data-act="new-assign" data-person="'+esc(p.id)+'">Assign</button><button class="btn small" data-act="edit-person" data-id="'+esc(p.id)+'">Edit</button></div></td>':'')+'</tr>';
+      }).join("")+'</tbody></table></div>';
+    }
+    h+='</section>';
+    m.innerHTML=h;
+    var qi=document.getElementById("q");
+    if(qi){
+      qi.addEventListener("input",function(){S.search=qi.value;var pos=qi.selectionStart;render();var n=document.getElementById("q");if(n){n.focus();try{n.setSelectionRange(pos,pos);}catch(e){}}});
+      document.getElementById("f").addEventListener("change",function(e){S.filter=e.target.value;render();});
+    }
+  }
+
+  /* ---------- dialogs ---------- */
+  var dlg=document.getElementById("dlg"),form=document.getElementById("dlgForm"),onSave=null,onDelete=null;
+  function openDialog(title,fields,save,del,delLabel,saveLabel,wide,noCancel){
+    dlg.className=wide?"wide":"";
+    form.innerHTML='<h3>'+esc(title)+'</h3>'+fields+'<p class="err" id="err" role="alert"></p><div class="dlg-foot">'+
+      (del?'<button type="button" class="btn danger" id="dDel">'+esc(delLabel||"Delete")+'</button>':'')+
+      '<div class="right">'+(noCancel?'':'<button type="button" class="btn" id="dCancel">Cancel</button>')+'<button type="submit" class="btn primary" id="dSave">'+esc(saveLabel||"Save")+'</button></div></div>';
+    onSave=save;onDelete=del;
+    var c=document.getElementById("dCancel");if(c) c.onclick=function(){dlg.close();};
+    if(del) document.getElementById("dDel").onclick=async function(){
+      var b=this;
+      if(b.dataset.confirm!=="1"){b.dataset.confirm="1";b.textContent="Select again to confirm";return;}
+      b.disabled=true;
+      try{await onDelete();dlg.close();scheduleReload();}catch(e){showErr(e);b.disabled=false;}
+    };
+    if(!dlg.open) dlg.showModal();
+    var first=form.querySelector("input:not([type=radio]):not([type=checkbox]):not([readonly]),select");if(first) first.focus();
+  }
+  function showErr(e){var el=document.getElementById("err");if(el) el.textContent=(e&&e.userMsg)||"This change could not be saved. Check your connection and try again.";}
+  form.addEventListener("submit",async function(ev){
+    ev.preventDefault();
+    var btn=document.getElementById("dSave");btn.disabled=true;
+    try{var ok=await onSave(new FormData(form));if(ok!==false){dlg.close();scheduleReload();}}
+    catch(e){showErr(e);}
+    btn.disabled=false;
+  });
+  function fail(msg){var e=new Error(msg);e.userMsg=msg;throw e;}
+
+  function swatches(cur){
+    cur=isHex(cur)?cur.toUpperCase():COLORS[16];
+    var inList=COLORS.indexOf(cur)>=0;
+    return '<div class="field"><span class="lbl">Colour</span><div class="swatches" role="radiogroup" aria-label="Project colour">'+COLORS.map(function(c){
+      return '<label><input type="radio" name="color" value="'+c+'"'+(cur===c?' checked':'')+' aria-label="Colour '+c+'"><span style="background:'+c+'"></span></label>';
+    }).join("")+'</div><label class="custom-color"><input type="color" id="cc" value="'+cur.toLowerCase()+'"'+(inList?'':' data-on="1"')+'> Or pick any custom colour</label></div>';
+  }
+  function wireSwatches(){
+    var cc=document.getElementById("cc");if(!cc) return;
+    cc.addEventListener("input",function(){cc.dataset.on="1";form.querySelectorAll('input[name=color]').forEach(function(r){r.checked=false;});});
+    form.querySelectorAll('input[name=color]').forEach(function(r){r.addEventListener("change",function(){cc.dataset.on="";cc.value=r.value.toLowerCase();});});
+  }
+  function chosenColor(fd){var cc=document.getElementById("cc");if(cc&&cc.dataset.on==="1") return cc.value.toUpperCase();return String(fd.get("color")||COLORS[16]);}
+
+  function projectDialog(id){
+    var p=id?S.projects[id]:null;
+    if(p&&!canEdit(p.id)) return;
+    var nextColor=COLORS[(list(S.projects).length*5)%COLORS.length];
+    openDialog(p?"Edit project":"New project",
+      '<div class="field"><label for="pn">Project name</label><input id="pn" name="name" required maxlength="80" value="'+esc(p?p.name:"")+'"></div>'+
+      '<div class="field"><label for="pd">Client or short description</label><input id="pd" name="desc" maxlength="120" value="'+esc(p?p.description||"":"")+'"><small>Optional</small></div>'+
+      swatches(p?p.color:nextColor),
+      async function(fd){
+        var name=String(fd.get("name")||"").trim();if(!name) fail("Enter a project name.");
+        var data={name:name,description:String(fd.get("desc")||"").trim(),color:chosenColor(fd)};
+        if(p){await run(sb.from("projects").update(data).eq("id",p.id));Object.assign(p,data);}
+        else{var row=await run(sb.from("projects").insert(data).select().single());S.projects[row.id]=row;S.sel=row.id;setUrlProject(row.id);}
+        render();
+      },
+      (p&&S.isAdmin)?async function(){
+        await run(sb.from("projects").delete().eq("id",p.id));
+        delete S.projects[p.id];S.sel=null;setUrlProject(null);render();
+      }:null,"Delete project");
+    wireSwatches();
+  }
+
+  function personDialog(id){
+    var p=id?S.people[id]:null;
+    openDialog(p?"Edit person":"Add person",
+      '<div class="field"><label for="nn">Full name</label><input id="nn" name="name" required maxlength="80" value="'+esc(p?p.name:"")+'"></div>'+
+      '<div class="field"><label for="nt">Job title or team</label><input id="nt" name="title" maxlength="80" value="'+esc(p?p.title||"":"")+'"><small>Shown when no project role is set</small></div>',
+      async function(fd){
+        var name=String(fd.get("name")||"").trim();if(!name) fail("Enter a name.");
+        var data={name:name,title:String(fd.get("title")||"").trim()};
+        if(p){await run(sb.from("people").update(data).eq("id",p.id));Object.assign(p,data);}
+        else{var row=await run(sb.from("people").insert(data).select().single());S.people[row.id]=row;}
+        render();
+      },
+      (p&&S.isAdmin)?async function(){await run(sb.from("people").delete().eq("id",p.id));delete S.people[p.id];render();}:null,"Remove person");
+  }
+
+  function assignDialog(opts){
+    var a=opts.id?S.assign[opts.id]:null;
+    if(a&&!canEdit(a.project_id)) return;
+    var pid=a?a.project_id:opts.project||"", per=a?a.person_id:opts.person||"";
+    var mode=opts.forceCore?"core":(a?(a.mode||"core"):"core");
+    var ppl=list(S.people).sort(byName),projs=list(S.projects).filter(function(x){return canEdit(x.id);}).sort(byName),t=totals();
+    if(!ppl.length||!projs.length){
+      openDialog("Assign to project",'<p class="hint">'+(!projs.length?"There is no project you can edit yet.":"Add at least one person first, on the People and allocation tab.")+'</p>',async function(){},null,null,"OK",false,true);
+      return;
+    }
+    var personSel='<select id="ap" name="person" required '+(a?'disabled':'')+'><option value="">Choose a person</option>'+ppl.map(function(x){
+      return '<option value="'+esc(x.id)+'"'+(x.id===per?' selected':'')+'>'+esc(x.name)+' ('+t[x.id]+'% allocated)</option>';}).join("")+'</select>';
+    var projSel='<select id="aj" name="project" required '+(a?'disabled':'')+'><option value="">Choose a project</option>'+projs.map(function(x){
+      return '<option value="'+esc(x.id)+'"'+(x.id===pid?' selected':'')+'>'+esc(x.name)+'</option>';}).join("")+'</select>';
+    var title=opts.forceCore?"Bring into the core team":(a?"Edit assignment":"Add person to project");
+    openDialog(title,
+      '<div class="field"><label for="ap">Person</label>'+personSel+'</div>'+
+      '<div class="field"><label for="aj">Project</label>'+projSel+'</div>'+
+      '<div class="field"><span class="lbl">Involvement</span><div class="seg">'+
+        '<label><input type="radio" name="mode" value="core"'+(mode==="core"?' checked':'')+'><span><b>Core team</b>Works on it now, counts toward allocation</span></label>'+
+        '<label><input type="radio" name="mode" value="adhoc"'+(mode==="adhoc"?' checked':'')+'><span><b>Ad hoc</b>On call, joins when needed</span></label></div></div>'+
+      '<div class="field"><label for="apc" id="apcL">Share of their time on this project (%)</label><input id="apc" name="percent" type="number" min="0" max="100" step="1" value="'+esc(a&&a.percent!=null&&!(opts.forceCore&&!a.percent)?a.percent:(mode==="adhoc"?"":50))+'"><small id="capHint"></small></div>'+
+      '<div class="field"><label for="ar">Role on this project</label><input id="ar" name="role" maxlength="60" placeholder="For example Project manager, Developer" value="'+esc(a?a.role||"":"")+'"></div>'+
+      '<div class="field"><label for="arp">Reports to</label><select id="arp" name="reportsTo"></select><small>You can also change this by dragging the lines in the organogram</small></div>',
+      async function(fd){
+        var personId=a?a.person_id:String(fd.get("person")||""),projectId=a?a.project_id:String(fd.get("project")||"");
+        if(!personId) fail("Choose a person.");if(!projectId) fail("Choose a project.");
+        var md=String(fd.get("mode")||"core"),raw=String(fd.get("percent")||"").trim(),v=raw===""?0:Math.round(Number(raw));
+        if(md==="core" && !(v>=1&&v<=100)) fail("Enter a share between 1 and 100 for a core team member.");
+        if(md==="adhoc" && !(v>=0&&v<=100)) fail("Enter a share between 0 and 100, or leave it empty.");
+        var existing=a||list(S.assign).filter(function(x){return x.person_id===personId&&x.project_id===projectId;})[0];
+        var data={percent:v,mode:md,role:String(fd.get("role")||"").trim(),reports_to:String(fd.get("reportsTo")||"")};
+        if(data.reports_to===personId) data.reports_to="";
+        if(existing){
+          await run(sb.from("assignments").update(data).eq("id",existing.id));
+          if(md==="adhoc" && existing.mode!=="adhoc"){
+            var subs=list(S.assign).filter(function(x){return x.project_id===projectId&&x.reports_to===personId&&x.id!==existing.id;});
+            for(var i=0;i<subs.length;i++) await run(sb.from("assignments").update({reports_to:existing.reports_to||""}).eq("id",subs[i].id));
+          }
+          Object.assign(existing,data);
+        } else {
+          data.person_id=personId;data.project_id=projectId;
+          var row=await run(sb.from("assignments").insert(data).select().single());S.assign[row.id]=row;
+        }
+        S.sel=projectId;setUrlProject(projectId);render();
+        if(opts.forceCore) toast(nm(personId)+" joined the core team");
+      },
+      a?async function(){
+        var subs=list(S.assign).filter(function(x){return x.project_id===a.project_id&&x.reports_to===a.person_id;});
+        for(var i=0;i<subs.length;i++) await run(sb.from("assignments").update({reports_to:a.reports_to||""}).eq("id",subs[i].id));
+        await run(sb.from("assignments").delete().eq("id",a.id));
+        delete S.assign[a.id];render();
+      }:null,"Remove from project",opts.forceCore?"Bring in":null);
+    var ps=document.getElementById("ap"),js=document.getElementById("aj"),rs=document.getElementById("arp"),pcIn=document.getElementById("apc"),hint=document.getElementById("capHint"),lab=document.getElementById("apcL");
+    var initialRep=a?a.reports_to||"":"";
+    function curMode(){var r=form.querySelector('input[name=mode]:checked');return r?r.value:"core";}
+    function refresh(){
+      var pr=js.value,me=ps.value,md=curMode(),cur=rs.value||initialRep;
+      var mates=pr?projAssign(pr).filter(function(x){return x.person_id!==me && !isAdhoc(x);}).map(function(x){return S.people[x.person_id];}).sort(byName):[];
+      rs.innerHTML='<option value="">The project (top level)</option><option value="__none"'+(cur==="__none"?' selected':'')+'>Not connected (no line)</option>'+mates.map(function(m){return '<option value="'+esc(m.id)+'"'+(m.id===cur?' selected':'')+'>'+esc(m.name)+'</option>';}).join("");
+      lab.textContent=md==="adhoc"?"Expected share when needed (%)":"Share of their time on this project (%)";
+      pcIn.required=md==="core";
+      if(!me){hint.textContent="";return;}
+      var cur0=list(S.assign).filter(function(x){return x.person_id===me&&x.project_id===pr&&!isAdhoc(x);})[0];
+      var other=(t[me]||0)-(cur0?Number(cur0.percent)||0:0);
+      var total=other+(md==="core"?(Number(pcIn.value)||0):0);
+      hint.textContent=md==="adhoc"?("Optional. Not counted in allocation. Their core total stays at "+other+"%."):("Total across all projects would be "+total+"%"+(total>100?", which is over 100%.":"."));
+      hint.style.color=(md==="core"&&total>100)?"var(--over)":"";
+    }
+    rs.addEventListener("change",function(){initialRep=rs.value;});
+    ps.addEventListener("change",refresh);js.addEventListener("change",refresh);pcIn.addEventListener("input",refresh);
+    form.querySelectorAll('input[name=mode]').forEach(function(r){r.addEventListener("change",function(){
+      if(r.value==="core"&&r.checked&&!pcIn.value) pcIn.value=50; refresh();});});
+    refresh();
+    if(opts.forceCore){pcIn.focus();if(pcIn.select)pcIn.select();}
+  }
+
+  /* ---------- sign in ---------- */
+  function signinDialog(){
+    openDialog("Sign in",
+      '<div class="field"><label for="se">Email</label><input id="se" name="email" type="email" autocomplete="username" required></div>'+
+      '<div class="field"><label for="sp">Password</label><input id="sp" name="password" type="password" autocomplete="current-password" required></div>'+
+      '<p class="hint">Accounts are created by the admin. Ask them if you don\'t have one.</p>',
+      async function(fd){
+        var r=await sb.auth.signInWithPassword({email:String(fd.get("email")||"").trim(),password:String(fd.get("password")||"")});
+        if(r.error) fail("The email or password is not right.");
+      },null,null,"Sign in");
+  }
+  function passwordDialog(){
+    openDialog("Change password",
+      '<div class="field"><label for="np">New password</label><input id="np" name="p1" type="password" autocomplete="new-password" minlength="8" required></div>'+
+      '<div class="field"><label for="np2">Repeat new password</label><input id="np2" name="p2" type="password" autocomplete="new-password" minlength="8" required></div>',
+      async function(fd){
+        var a=String(fd.get("p1")||""),b=String(fd.get("p2")||"");
+        if(a.length<8) fail("Use at least 8 characters.");if(a!==b) fail("The two passwords are not the same.");
+        var r=await sb.auth.updateUser({password:a});if(r.error) fail("The password could not be changed. "+r.error.message);
+        toast("Password changed");
+      },null,null,"Change password");
+  }
+
+  /* ---------- sharing ---------- */
+  async function shareDialog(){
+    var p=S.projects[S.sel];if(!p||!S.isAdmin) return;
+    var mem=S.members.filter(function(m){return m.project_id===p.id;}).sort(function(a,b){return a.email.localeCompare(b.email);});
+    openDialog("Share "+p.name,
+      '<div class="field"><span class="lbl">Link to this project</span><div class="linkrow"><input readonly value="'+esc(shareLink(p.id))+'" aria-label="Project link"><button type="button" class="btn small" data-act="copylink">Copy link</button></div></div>'+
+      '<div class="field"><label class="check"><input type="checkbox" id="pub"'+(p.is_public?' checked':'')+'> Anyone with the link can view, without signing in</label><small>They can see this project\'s organogram and on-call pool. They can\'t change anything.</small></div>'+
+      '<div class="field"><span class="lbl">People with access</span>'+
+      (mem.length?'<ul class="members">'+mem.map(function(m){return '<li><span>'+esc(m.email)+'</span><select data-mem="'+esc(m.email)+'" aria-label="Access for '+esc(m.email)+'"><option value="viewer"'+(m.role==="viewer"?' selected':'')+'>Can view</option><option value="editor"'+(m.role==="editor"?' selected':'')+'>Can edit</option></select><button type="button" class="btn small" data-act="mem-del" data-email="'+esc(m.email)+'">Remove</button></li>';}).join("")+'</ul>':'<p class="hint">Only admins can see this project so far.</p>')+
+      '<div class="addrow"><input id="memEmail" type="email" placeholder="colleague@company.com" aria-label="Email to add"><select id="memRole" aria-label="Access level"><option value="viewer">Can view</option><option value="editor">Can edit</option></select><button type="button" class="btn small primary" data-act="mem-add">Add</button></div>'+
+      '<small>Each person also needs an account. Create it in Supabase under Authentication, Users, Add user, and send them their password.</small></div>',
+      async function(){},null,null,"Done",true,true);
+    document.getElementById("memEmail").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();memberAdd();}});
+    document.getElementById("pub").addEventListener("change",async function(e){
+      var v=e.target.checked;
+      try{await run(sb.from("projects").update({is_public:v}).eq("id",p.id));p.is_public=v;toast(v?"Anyone with the link can view":"Link sharing turned off");}
+      catch(err){e.target.checked=!v;showErr(err);}
+    });
+    form.querySelectorAll("select[data-mem]").forEach(function(sel){sel.addEventListener("change",async function(){
+      try{await run(sb.from("project_members").update({role:sel.value}).eq("project_id",p.id).eq("email",sel.dataset.mem));await loadMembers();toast("Access updated");}
+      catch(err){showErr(err);}
+    });});
+  }
+  async function memberAdd(){
+    var p=S.projects[S.sel],em=document.getElementById("memEmail"),role=document.getElementById("memRole").value;
+    var email=String(em.value||"").trim().toLowerCase();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showErr({userMsg:"Enter a valid email address."});return;}
+    try{await run(sb.from("project_members").upsert({project_id:p.id,email:email,role:role}));await loadMembers();shareDialog();toast(email+" added");}
+    catch(err){showErr(err);}
+  }
+  async function memberDel(email){
+    var p=S.projects[S.sel];
+    try{await run(sb.from("project_members").delete().eq("project_id",p.id).eq("email",email));await loadMembers();shareDialog();toast(email+" removed");}
+    catch(err){showErr(err);}
+  }
+  function copyLink(){
+    var link=shareLink(S.sel);
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(link).then(function(){toast("Link copied");},function(){prompt("Copy this link",link);});
+    else prompt("Copy this link",link);
+  }
+
+  /* ---------- history ---------- */
+  function fmtTime(s){try{return new Date(s).toLocaleString(undefined,{dateStyle:"medium",timeStyle:"short"});}catch(e){return s;}}
+  function summarize(h,names){
+    var o=h.old_row||{},n=h.new_row||{};
+    function who(id){return names[id]||(S.people[id]&&S.people[id].name)||"a removed person";}
+    if(h.entity==="restore") return {text:"Went back to the version from "+fmtTime(n.to_at),move:false};
+    if(h.entity==="projects"){
+      if(h.action==="insert") return {text:'Created the project "'+n.name+'"',move:false};
+      if(h.action==="delete") return {text:"Deleted the project",move:false};
+      var parts=[],moved=false;
+      if(o.name!==n.name) parts.push('Renamed the project to "'+n.name+'"');
+      if(o.description!==n.description) parts.push("Changed the project description");
+      if(o.color!==n.color) parts.push("Changed the project colour");
+      if(o.is_public!==n.is_public) parts.push(n.is_public?"Turned on view-by-link":"Turned off view-by-link");
+      if(o.root_x!==n.root_x||o.root_y!==n.root_y){moved=true;parts.push("Moved the project card");}
+      return {text:parts.join("; ")||"Edited the project",move:moved&&parts.length===1};
+    }
+    if(h.entity==="assignments"){
+      var w=who(n.person_id||o.person_id);
+      if(h.action==="insert") return {text:n.mode==="adhoc"?"Added "+w+" to the on-call pool":"Added "+w+" to the core team at "+n.percent+"%",move:false};
+      if(h.action==="delete") return {text:"Removed "+w+" from the project",move:false};
+      var ps=[],mv=false;
+      if(o.mode!==n.mode) ps.push(n.mode==="adhoc"?"Moved "+w+" to the on-call pool":"Brought "+w+" into the core team");
+      if(o.percent!==n.percent) ps.push(w+": share changed from "+o.percent+"% to "+n.percent+"%");
+      if(o.role!==n.role) ps.push(w+": role changed to "+(n.role?'"'+n.role+'"':"none"));
+      if(o.reports_to!==n.reports_to) ps.push(n.reports_to==="__none"?"Deleted the line above "+w:w+" now reports to "+(n.reports_to?who(n.reports_to):"the project"));
+      if(o.x!==n.x||o.y!==n.y){mv=true;ps.push("Moved "+w+"'s card");}
+      return {text:ps.join("; ")||"Edited "+w,move:mv&&ps.length===1};
+    }
+    return {text:"Changed "+h.entity,move:false};
+  }
+  async function historyDialog(){
+    var p=S.projects[S.sel];if(!p) return;
+    openDialog("History of "+p.name,'<p class="hint">Loading history</p>',async function(){},null,null,"Close",true,true);
+    var rows;
+    try{rows=await run(sb.from("history").select("*").eq("project_id",p.id).order("id",{ascending:false}).limit(500));}
+    catch(e){showErr({userMsg:"The history could not be loaded."});return;}
+    var names={};
+    rows.forEach(function(h){[h.old_row,h.new_row].forEach(function(r){if(r&&r.person_id&&S.people[r.person_id]) names[r.person_id]=S.people[r.person_id].name;});});
+    renderHistory(p,rows,names);
+  }
+  function renderHistory(p,rows,names){
+    var ed=canEdit(p.id);
+    var vis=rows.filter(function(h){return !h.batch||h.entity==="restore";}).map(function(h){var s=summarize(h,names);return {h:h,s:s};})
+      .filter(function(x){return S.showMoves||!x.s.move;});
+    var html='<div class="hist-top"><p class="hint" style="margin:0">Newest first. '+(ed?'Use "Go back to here" to put the project back exactly as it was right after that change. Going back is saved in the history too, so you can undo it.':'')+'</p>'+
+      '<label class="check"><input type="checkbox" id="showMoves"'+(S.showMoves?' checked':'')+'> Show card moves</label></div>';
+    if(!vis.length) html+='<p class="hint">No changes recorded yet.</p>';
+    else html+='<ul class="hist">'+vis.map(function(x,i){
+      var h=x.h;
+      return '<li class="'+(h.entity==="restore"?'restore':'')+'"><span class="what">'+esc(x.s.text)+'</span><span class="meta">'+esc(fmtTime(h.at))+' by '+esc(h.actor==="system"?"database import or admin":h.actor)+'</span>'+
+        (ed&&i>0?'<span class="act"><button type="button" class="btn small" data-act="restore" data-hid="'+h.id+'">Go back to here</button></span>':(i===0?'<span class="act hint">Current</span>':''))+'</li>';
+    }).join("")+'</ul>';
+    var titleEl=form.querySelector("h3");
+    form.innerHTML='';form.appendChild(titleEl);
+    var wrap=document.createElement("div");wrap.innerHTML=html+'<p class="err" id="err" role="alert"></p><div class="dlg-foot"><div class="right"><button type="submit" class="btn primary" id="dSave">Close</button></div></div>';
+    while(wrap.firstChild) form.appendChild(wrap.firstChild);
+    onSave=async function(){};
+    document.getElementById("showMoves").addEventListener("change",function(e){S.showMoves=e.target.checked;renderHistory(p,rows,names);});
+  }
+  async function restoreTo(btn){
+    if(btn.dataset.confirm!=="1"){btn.dataset.confirm="1";btn.textContent="Select again to go back";return;}
+    btn.disabled=true;
+    try{
+      await run(sb.rpc("restore_project",{p:S.sel,hid:Number(btn.dataset.hid)}));
+      await loadAll();toast("The project is back to that version");historyDialog();
+    }catch(e){showErr({userMsg:e.userMsg&&/permission/i.test(e.message)?"You don't have permission to restore this project.":"That version could not be restored. "+(e.message||"")});btn.disabled=false;}
+  }
+
+  /* ---------- events ---------- */
+  document.addEventListener("click",function(e){
+    var b=e.target.closest("[data-act]");if(!b) return;
+    var act=b.dataset.act;
+    if(act==="select"){S.sel=b.dataset.id;setUrlProject(S.sel);render();return;}
+    if(act==="signin") return signinDialog();
+    if(act==="signout"){sb.auth.signOut();return;}
+    if(act==="password") return passwordDialog();
+    if(act==="copylink") return copyLink();
+    if(act==="history") return historyDialog();
+    if(act==="share") return shareDialog();
+    if(act==="mem-add") return memberAdd();
+    if(act==="mem-del") return memberDel(b.dataset.email);
+    if(act==="restore") return restoreTo(b);
+    if(act==="close-pop") return closePop();
+    if(act==="del-link") return deleteLink();
+    if(act==="new-project"&&S.isAdmin) projectDialog();
+    else if(act==="edit-project") projectDialog(b.dataset.id);
+    else if(act==="new-person"&&editorAny()) personDialog();
+    else if(act==="edit-person"&&editorAny()) personDialog(b.dataset.id);
+    else if(act==="new-assign") assignDialog({project:b.dataset.project,person:b.dataset.person});
+    else if(act==="edit-assign") assignDialog({id:b.dataset.id});
+    else if(act==="activate") assignDialog({id:b.dataset.id,forceCore:true});
+    else if(act==="arrange"&&canEdit(S.sel)) autoArrange();
+  });
+  function route(){var h=(location.hash||"").slice(1);S.view=h==="people"?"people":"projects";render();}
+  window.addEventListener("hashchange",route);
+  window.addEventListener("resize",function(){drawLinks();});
+
+  /* ---------- data ---------- */
+  function byId(rows){var o={};(rows||[]).forEach(function(r){o[r.id]=r;});return o;}
+  async function loadMembers(){
+    if(!S.email){S.members=[];S.myRoles={};return;}
+    var rows=await run(sb.from("project_members").select("*"));
+    S.members=rows||[];S.myRoles={};
+    S.members.forEach(function(m){if(m.email===S.email) S.myRoles[m.project_id]=m.role;});
+  }
+  var loading=null,again=false;
+  async function loadAll(){
+    if(loading){again=true;return loading;}
+    loading=(async function(){
+      try{
+        var r=await Promise.all([run(sb.from("projects").select("*")),run(sb.from("assignments").select("*")),run(sb.from("people").select("*"))]);
+        S.projects=byId(r[0]);S.assign=byId(r[1]);S.people=byId(r[2]);
+        if(S.email){
+          var ad=await sb.rpc("is_admin");S.isAdmin=!!ad.data;
+          await loadMembers();
+        } else {S.isAdmin=false;S.members=[];S.myRoles={};}
+        var ids=Object.keys(S.people);S.totals={};
+        if(ids.length){
+          var tt=await sb.rpc("person_totals",{ids:ids});
+          (tt.data||[]).forEach(function(x){S.totals[x.person_id]={core:x.core_total,adhoc:x.adhoc_count};});
+        }
+        S.loaded=true;if(S.status!=="nosetup") S.status="ready";
+      }catch(e){S.status="error";S.loaded=true;}
+    })();
+    await loading;loading=null;
+    render();
+    if(again){again=false;return loadAll();}
+  }
+  var reloadT;
+  function scheduleReload(){clearTimeout(reloadT);reloadT=setTimeout(loadAll,400);}
+
+  function start(){
+    var sp=new URL(location.href).searchParams.get("project");if(sp) S.sel=sp;
+    route();
+    if(/PASTE_/.test(SUPABASE_URL+SUPABASE_KEY)||!window.supabase){S.status="nosetup";render();return;}
+    sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+    sb.auth.onAuthStateChange(function(evt,session){
+      var em=session&&session.user&&session.user.email?session.user.email.toLowerCase():"";
+      if(em!==S.email||evt==="INITIAL_SESSION"){S.email=em;if(dlg.open&&evt==="SIGNED_IN") dlg.close();setTimeout(loadAll,0);}
+    });
+    sb.channel("organogram").on("postgres_changes",{event:"*",schema:"public"},function(){scheduleReload();}).subscribe();
+    setInterval(function(){if(document.visibilityState==="visible"&&!S.dragging&&!dlg.open) loadAll();},60000);
+    document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible") scheduleReload();});
+  }
+  start();
+})();
+</script>
+</body>
+</html>
